@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head>
+	<title>Apresentação</title>
+</h:head>
+<h:body>
+
+	<style type="text/css">
+.ui-layout-unit-content {
+	background-image: url('#{request.contextPath}img/li.png');
+}
+
+.h1{
+	color: #0f0;
+}
+
+</style>
+
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="center">
+			<center>
+				<h1>Bem-vindo ao jogos mil grau! Aqui você pode cadastrar seus
+					jogos</h1>
+				<h1>e organizar sua coleção</h1>
+				<h:form>
+					<h:commandLink value="Seguir para a Tela de Login"
+						action="login.xhtml" />
+					<br/><br/>	
+					<h:commandLink value="Não possuo uma conta"
+						action="cad_user.xhtml" />							
+				</h:form>
+			</center>
+		</p:layoutUnit>
+
+	</p:layout>
+</h:body>
+</html>

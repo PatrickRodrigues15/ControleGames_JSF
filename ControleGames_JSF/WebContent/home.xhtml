@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<!-- 	
+<style>
+header {
+    background-color: #333;
+}
+
+
+#logo {
+    width: 10%;
+    margin-left: 12%;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    display: inline;
+}
+
+.ui-menubar,.ui-menu-child,.ui-menu {
+    float:right;
+    margin-right:15%;
+    width: 26% !important;  
+    background-color: #aaa; 
+}
+
+.ui-menuitem-link.ui-corner-all.ui-state-hover {
+    color: #fff;
+    background-color: #000;
+}
+</style>
+
+-->
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Home</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="messages" />
+		<h:graphicImage value="img/logo_teste.png" width="217" height="39"
+			id="logo" />
+		<p:menubar>
+			<p:menuitem value="Home" action="home.xhtml" />
+			<p:menuitem value="Cad Console" action="console.xhtml" />
+			<p:menuitem value="Cad Jogos" action="jogos.xhtml" />
+			<p:menuitem value="Informações" url="#" />
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Buscar" action="#{consoleMB.pesquisar}" />
+				<!--  <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />  -->
+			</f:facet>
+		</p:menubar>      
+        
+        
+		Bem-vindo ao  sistema! O site  possibilita você cadastrar jogos e consoles. Aqui você organizar sua coleção de jogos e consoles.
+         
+		
+          
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">	  	  	  
+	  
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Login</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h1>Login</h1>
+		<h2><h:outputText value="${loginMB.mensagem}"/></h2>
+		<table>
+			<tr>
+				<td><h:outputText value="Id"/></td>
+				<td><h:inputText id="txtId" value="${loginMB.loginAtual.id}" readonly="true"/></td>
+			</tr>
+			<tr>
+			
+				<td><h:outputText id="teste" value="Nome"/></td>
+				<td><h:inputText id="txtnome" value="${loginMB.loginAtual.nome}" requires="true" />
+				<h:message for="txtnome" display="text"/>
+				
+				</td> 
+			</tr>
+			<tr>
+				<td><h:outputText value="Senha"/></td>
+				<td><h:inputSecret  id="txtsenha" value="${loginMB.loginAtual.senha}" requiredMessage="menssagem aqui" required="true" />
+				 <h:message for="txtnome"  display="text"/>
+				</td>
+			</tr>
+		</table>
+		
+		<h:commandButton name="cmd" value="Logar" update="grid" action="${loginMB.login()}"/>		
+	<!-- <h:commandButton name="cmd" value="Gravar" action="${loginMB.gravar()}"/> -->
+		<h:commandButton name="cmd" value="Pesquisar por nome" action="${loginMB.pesquisar()}"/>
+		<h:commandButton name="cmd" value="Atualiar" action="${loginMB.atualizar()}"/>
+		<h:commandButton name="cmd" value="Pesquisar todos" action="${loginMB.pesquisarTodos()}"/>
+			<h:commandButton name="cmd" value="Remover" action="${loginMB.remover()}"/>
+		
+		<h:dataTable
+			value="${loginMB.logins}"
+			var="log"
+			border="2"
+			rendered="${not empty loginMB.logins}">
+			
+		<h:column>
+			<h:commandLink action="${loginMB.carrega(log)}">
+				${log.id}
+			</h:commandLink>		
+			<f:facet name="header">Id</f:facet>
+		</h:column>
+		<h:column>${log.nome}
+			<f:facet name="header">Nome</f:facet>		
+		</h:column>
+		<h:column>${log.senha}
+			<f:facet name="header">Senha</f:facet>
+		</h:column>
+		<h:column>
+			<h:commandButton name="cmd" value="Editar" action="${loginMB.carregar(log)}"/>
+			<f:facet name="header">Ação</f:facet>
+		</h:column>		
+		</h:dataTable>
+	</h:form>
+</h:body>	
+</html>

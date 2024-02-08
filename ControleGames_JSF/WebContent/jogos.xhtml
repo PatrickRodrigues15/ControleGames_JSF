@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Jogos</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<h:graphicImage value="img/logo_teste.png" width="300" height="39"
+			id="logo" />
+		<p:menubar>
+			<p:menuitem value="Home" action="home.xhtml" />
+			<p:menuitem value="Cad Console" action="console.xhtml" />
+			<p:menuitem value="Cad Jogos" action="jogos.xhtml" />
+			<p:menuitem value="Informações" url="#" />
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Buscar" />
+				<!--  <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />  -->
+			</f:facet>
+		</p:menubar>
+		<p:panel id="panel" header="Jogos" style="margin-bottom:10px;">
+			<p:growl id="messages" />
+
+			<h2>
+				<h:outputText value="${jogosMB.mensagem}" />
+			</h2>
+
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Id" />
+				<h:inputText value="${jogosMB.jogosAtual.id}" />
+
+				<h:outputLabel value="Nome" />
+				<h:inputText value="${jogosMB.jogosAtual.nome}" />
+
+				<h:outputLabel value="Genero" />
+				<h:inputText value="${jogosMB.jogosAtual.genero}" />
+
+				<h:outputLabel value="Desenvolvedora" />
+				<h:inputText value="${jogosMB.jogosAtual.desenvolvedora}" />
+
+				<h:outputLabel value="Publicadora" />
+				<h:inputText value="${jogosMB.jogosAtual.publicadora}" />
+
+				<h:outputLabel value="Ano de Compra" />
+				<h:inputText value="${jogosMB.jogosAtual.anoComprado}" />
+
+				<h:outputLabel value="Ano de Lançamento" />
+				<h:inputText value="${jogosMB.jogosAtual.anoJogo}" />
+
+				<h:outputLabel value="Preço" />
+				<h:inputText value="${jogosMB.jogosAtual.preco}" />
+
+				<h:outputLabel value="Quantidade" />
+				<h:inputText value="${jogosMB.jogosAtual.quantidade}" />
+
+				<h:commandButton value="Adicionar" action="#{jogosMB.adicionar}" />
+				<h:commandButton value="Pesquisar" action="#{jogosMB.pesquisar}" />
+				<h:commandButton value="Alterar" action="#{jogosMB.alterar}" />
+				<h:commandButton value="Deletar" action="#{jogosMB.deletar}" />
+			</h:panelGrid>
+
+			<h:dataTable value="#{jogosMB.lista}" var="jogos" border="2"
+				rendered="#{not empty jogosMB.lista}">
+				<h:column>
+					<h:commandLink action="${jogosMB.carrega(jogos)}">
+				#{jogos.id}
+				</h:commandLink>
+					<f:facet name="header">Id</f:facet>
+				</h:column>
+				<h:column>
+				#{jogos.nome}
+				<f:facet name="header">Nome</f:facet>
+				</h:column>
+				<h:column>
+				#{jogos.genero}
+				<f:facet name="header">Genero</f:facet>
+				</h:column>
+				<h:column>
+				#{jogos.desenvolvedora}
+				<f:facet name="header">Desenvolvedora</f:facet>
+				</h:column>
+				<h:column>
+				#{jogos.publicadora}
+				<f:facet name="header">Publicadora</f:facet>
+				</h:column>
+				<h:column>
+				#{jogos.anoComprado}
+				<f:facet name="header">Ano de Compra</f:facet>
+				</h:column>
+				<h:column>
+				#{jogos.anoJogo}
+				<f:facet name="header">Ano de Lançamento</f:facet>
+				</h:column>
+				<h:column>
+				#{jogos.preco}
+				<f:facet name="header">Preço</f:facet>
+				</h:column>
+				<h:column>
+				#{jogos.quantidade}
+				<f:facet name="header">Quantidade</f:facet>
+				</h:column>
+			</h:dataTable>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

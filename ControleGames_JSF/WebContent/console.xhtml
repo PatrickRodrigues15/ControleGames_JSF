@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Consoles</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<h:graphicImage value="img/logo_teste.png" width="300" height="39"
+			id="logo" />
+		<p:menubar>
+			<p:menuitem value="Home" action="home.xhtml" />
+			<p:menuitem value="Cad Console" action="console.xhtml" />
+			<p:menuitem value="Cad Jogos" action="jogos.xhtml" />
+			<p:menuitem value="Informações" url="#" />
+			<f:facet name="options">
+				<p:commandLink id="idlogout" style="color: black; font-size: 14px"
+					value="Logout" action="#{consoleMB.logout}" ajax="false">
+				</p:commandLink>
+				<p:inputText style="margin-right:10px" placeholder="Buscar" />
+			</f:facet>
+		</p:menubar>
+		<p:panel id="panel" header="Console" style="margin-bottom:10px;">
+			<p:growl id="messages" />
+
+			<h2>
+				<h:outputText value="${consoleMB.mensagem}" />
+			</h2>
+
+		
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Id" />
+				<h:inputText value="${consoleMB.consoleAtual.id}" />
+
+				<h:outputLabel value="Nome" />
+				<h:inputText value="${consoleMB.consoleAtual.nome}" />
+
+				<h:outputLabel value="Preço" />
+				<h:inputText value="${consoleMB.consoleAtual.preco}" />
+
+				<h:outputLabel value="Data de Lançamento" />
+				<h:inputText id="date"
+					value="${consoleMB.consoleAtual.dtLancamento}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:inputText>
+				<h:outputLabel value="Produtora" />
+				<h:inputText value="${consoleMB.consoleAtual.produtora}" />
+
+				<h:outputLabel value="Versão" />
+				<p:selectOneMenu id="versao"
+					value="${consoleMB.consoleAtual.versao}" style="width:200px">
+					<f:selectItem itemLabel="Selecione uma opção" itemValue="" />
+					<f:selectItem itemLabel="Normal" itemValue="normal" />
+					<f:selectItem itemLabel="Slim"   itemValue="slim" />
+					<f:selectItem itemLabel="Outro"  itemValue="outro" />
+				</p:selectOneMenu>
+
+				<h:commandButton value="Adicionar" action="#{consoleMB.adicionar}" />
+				<h:commandButton value="Pesquisar" action="#{consoleMB.pesquisar}" />
+				<h:commandButton value="Alterar"   action="#{consoleMB.alterar}" />
+				<h:commandButton value="Deletar"   action="#{consoleMB.deletar}" />
+			</h:panelGrid>
+	
+
+			<h:dataTable value="#{consoleMB.lista}" var="console" border="2"
+				rendered="#{not empty consoleMB.lista}">
+				<h:column>
+				#{console.id}
+				<f:facet name="header">Id</f:facet>
+				</h:column>
+				<h:column>
+				#{console.nome}
+				<f:facet name="header">Nome</f:facet>
+				</h:column>
+				<h:column>
+				#{console.preco}
+				<f:facet name="header">Preço</f:facet>
+				</h:column>
+				<h:column>
+				#{console.dtLancamento}
+				<f:facet name="header">Ano de Lançamento</f:facet>
+				</h:column>
+				<h:column>
+				#{console.produtora}
+				<f:facet name="header">Produtora</f:facet>
+				</h:column>
+				<h:column>
+				#{console.versao}
+				<f:facet name="header">Versão</f:facet>
+				</h:column>
+			</h:dataTable>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>
